@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Enhancement Complete | Ready to Download</title>
+        <style>
+            * {
+                padding:0px;
+                margin:0px;
+                background-color: black;
+                font-family: 'Arial', sans-serif;
+            }
+            .Intro{
+                display: flex;
+                justify-self: right;
+                align-items: center;
+                gap:10px;
+                margin-left:200px;
+                margin-right:200px;
+                margin-top:40px;
+                font-size:22px;
+                color:white;
+                margin-bottom: 50px;
+            }
+            .Intro h3{
+                flex-grow:1;
+            }
+            .Intro a{
+                color: white;
+                text-decoration: none;
+                padding-right: 10px;
+                transition: transform 0.5s;
+            }
+            .Intro a:hover{
+                transform:scale(1.1);
+            }
+            .Intro img{
+                height: 35px;
+                width: 35px;
+                padding: 0px;
+                border-radius: 50%;
+            }
+            .imagerow {
+                display: flex;
+                justify-content: center;
+                gap:50px;
+                margin-top: 50px;
+            }
+            .imagerow div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .imagerow img {
+                width: 500px;
+                height: 500px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+            .imagerow p {
+                font-size: 20px;
+                font-weight: bold;
+                margin-top: 10px;
+                color: white;
+            }
+            .Download{
+                color:white;
+                justify-content: space-between;
+                text-align: center;
+            }
+            button{
+                margin-top:10px;
+                background:white;
+                border-radius: 15px;
+                padding: 2px 15px;
+                cursor: pointer;
+                color: black;
+                border: none;
+                padding:10px 15px;
+                transition: transform 0.5s;
+            }
+            button:hover{
+                background-color: rgb(124, 172, 220);
+                color:white;
+                transform:scale(1.05);
+            }
+            .Watermark{
+                margin-top: 100px;
+                font-size: 13px;
+                color: white;
+                text-align: center;
+                margin-bottom:50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="Intro">
+            <img src="{{ url_for('static', filename='me.jpg') }}" alt="Sample Image">
+            <h3><a href="{{ url_for('home') }}">Ayush Barthwal</a></h3>
+            <img src="{{ url_for('static', filename='linkedin.png') }}" alt="Sample Image">
+            <a href="https://www.linkedin.com/in/ayush-barthwal/">LinkedIn</a>
+            <img src="{{ url_for('static', filename='github.png') }}" alt="Sample Image">
+            <a href="https://github.com/ayushbarthwal">Github</a>
+        </div>
+        <div class="Download">
+            <h2>Your Enhanced Image is Ready for Download</h2>
+            <a href="{{ url_for('output_file', filename=output_image) }}" download>
+                <button>Download</button>
+            </a>
+        </div>
+        <div class="imagerow">
+            <div>
+                <img src="{{ url_for('uploaded_file', filename=input_image) }}" alt="Input Image">
+                <p>Original Resolution: {{ input_resolution[0] }}x{{ input_resolution[1] }}</p>
+
+            </div>
+            <div>
+                <img src="{{ url_for('output_file', filename=output_image) }}" alt="Output Image">
+                <p>Enhanced Resolution: {{ output_resolution[0] }}x{{ output_resolution[1] }}</p>
+            </div>
+        </div>
+        <div class="Watermark">
+            <p>Built from scratch by Ayush Barthwal | 3rd Semester | Powered by Flask and Real-ESRGAN</p>
+        </div>               
+    </body>
+</html>

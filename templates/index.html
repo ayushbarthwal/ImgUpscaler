@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Upscaler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="Intro">
+        <img src="{{ url_for('static', filename='me.jpg') }}" alt="Sample Image">
+        <h3><a href="{{ url_for('home') }}">Ayush Barthwal</a></h3>
+        <img src="{{ url_for('static', filename='linkedin.png') }}" alt="Sample Image">
+        <a href="https://www.linkedin.com/in/ayush-barthwal/">LinkedIn</a>
+        <img src="{{ url_for('static', filename='github.png') }}" alt="Sample Image">
+        <a href="https://github.com/ayushbarthwal">Github</a>
+    </div>
+    <div class="Content">
+        <div class="Head">
+            <h1>Choose an image to Upscale</h1>
+            <p>Upload an image to upscale it using Real-ESRGAN</p>
+        </div>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" class="custombutton"><br>
+            <button type="submit">Upscale</button>
+        </form>
+    </div>
+    <div class="Tutorial">
+        <h1>Guidelines for Optimal Results</h1>
+        <p>To achieve the best enhancement, ensure that the image is sharp, clear, and free from blurriness.</p>
+        <p>Below are two examples for reference:</p>
+        <div class="imagerow">
+            <div>
+                <img src="{{ url_for('static', filename='correct.jpg') }}" class="correct" alt="Sample Image">
+                <h3>Optimized for Enhancement</h3><br>
+                <div class="checklist">
+                    <p>✔ The image is sharp and high-quality.</p>
+                    <p>✔ The image is well-lit with minimal noise.</p>
+                    <p>✔ The image has clear and defined details.</p>
+                    <p>✔ The image is not overly compressed or pixelated.</p>
+                </div>
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='wrong.png') }}" class="wrong" alt="Sample Image">
+                <h3>Challenging for Enhancement</h3><br>
+                <div class="checklist">
+                    <p>✘ The image is blurry or out of focus.</p>
+                    <p>✘ The image is heavily pixelated or compressed.</p>
+                    <p>✘ The image is too dark, overexposed, or noisy.</p>
+                    <p>✘ The image lacks distinct edges or details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Watermark">
+        <p>Built from scratch by Ayush Barthwal | 3rd Semester | Powered by Flask and Real-ESRGAN</p>
+    </div>
+</body>
+</html>
